@@ -63,6 +63,8 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 600; line-height: 1.14;
 .h2 { font-size: clamp(1.65rem, 1.2rem + 2vw, 2.5rem); text-wrap: balance; }
 .h3 { font-size: 1.22rem; }
 p { text-wrap: pretty; }
+/* Equilibra as linhas em blocos centralizados/curtos para não sobrar linha com poucas palavras (órfãs) */
+.lead, .cta-band p, .porque__center p { text-wrap: balance; }
 .lead { font-size: clamp(1.05rem, 1rem + .5vw, 1.24rem); color: var(--ink-soft); }
 .muted { color: var(--muted); }
 .strong { font-weight: 700; color: var(--navy); }
@@ -356,7 +358,7 @@ html.modal-open { overflow: hidden; }
 .footer { background: var(--navy-2); color: #c3d0de; padding-top: clamp(2.8rem, 6vw, 4rem); }
 .footer__grid { display: grid; grid-template-columns: 1.5fr 1fr 1.3fr; gap: 2rem; padding-bottom: 2.4rem; }
 .footer__grid > * { min-width: 0; }
-.footer__brand img { height: 44px; width: auto; margin-bottom: 1rem; filter: brightness(0) invert(1); opacity: .95; }
+.footer__brand img { width: 190px; max-width: 100%; height: auto; margin-bottom: 1rem; }
 .footer__brand p { font-size: .92rem; line-height: 1.7; max-width: 40ch; color: #9fb0c2; }
 .footer__h { color: #fff; font-family: var(--serif); font-weight: 600; font-size: .82rem; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 1rem; }
 .footer__col a, .footer__col p { display: block; font-size: .92rem; color: #a9b8c8; padding: .2rem 0; line-height: 1.55; }
