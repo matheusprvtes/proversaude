@@ -199,6 +199,39 @@ var CONTACT = {
     });
   });
 
+  /* ---- Pop-up de adesão (formulário) ---- */
+  var modal = document.getElementById("adesao");
+  if (modal) {
+    var lastFocus = null;
+    var openModal = function (e) {
+      if (e) e.preventDefault();
+      lastFocus = document.activeElement;
+      modal.classList.add("is-open");
+      modal.setAttribute("aria-hidden", "false");
+      document.documentElement.classList.add("modal-open");
+      setTimeout(function () {
+        var f = modal.querySelector("#nome") || modal.querySelector("input, select, button");
+        if (f) f.focus();
+      }, 80);
+    };
+    var closeModal = function () {
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "true");
+      document.documentElement.classList.remove("modal-open");
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    };
+    // Abrir: todos os CTAs que apontam para #adesao, exceto os de WhatsApp
+    document.querySelectorAll('a[href="#adesao"]:not([data-wa])').forEach(function (a) {
+      a.addEventListener("click", openModal);
+    });
+    modal.querySelectorAll("[data-modal-close]").forEach(function (b) {
+      b.addEventListener("click", closeModal);
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && modal.classList.contains("is-open")) closeModal();
+    });
+  }
+
   /* ---- Carrossel (uma imagem por vez, loop infinito) ---- */
   document.querySelectorAll(".carousel").forEach(function (car) {
     var slides = Array.prototype.slice.call(car.querySelectorAll(".carousel__slide"));
